@@ -10,11 +10,15 @@
 #import "NSObject+JSON.h"
 
 @interface NewsFeed : NSObject
-{
-@public
-    NSString *title;
-    NSArray<Row> *rows;
-}
+//{
+//@private
+//    NSString *title;
+//    NSArray<Row> *rows;
+//}
+
+@property(nonatomic,copy) NSString *title;
+@property(nonatomic,retain) NSArray<Row> *rows;
+
 - (instancetype)initWithTitle:(NSString *)aTitle rows:(NSArray <Row> *)aRows NS_DESIGNATED_INITIALIZER;
 
 - (NSString *)description;

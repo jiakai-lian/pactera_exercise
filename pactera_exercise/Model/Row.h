@@ -12,12 +12,17 @@
 @end
 
 @interface Row : NSObject
-{
-@public
-    NSString *title;        //title of the row
-    NSString *description;  // description of the row
-    NSString *imageHref;    //image url
-}
+//{
+//@private
+//    NSString *title;        //title of the row
+//    NSString *desc;  // description of the row
+//    NSString *imageHref;    //image url
+//}
+
+@property(nonatomic,copy) NSString *title;
+@property(nonatomic,copy) NSString *desc;
+@property(nonatomic,copy) NSString *imageHref;
+
 - (instancetype)initWithTitle:(NSString *)aTitle description:(NSString *)aDescription imageHref:(NSString *)anImageHref NS_DESIGNATED_INITIALIZER;
 
 - (NSString *)description;

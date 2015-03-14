@@ -14,8 +14,8 @@
     self = [super init];
     if (self)
     {
-        title = [aTitle copy];
-        rows = [aRows retain];
+        _title = [aTitle copy];
+        _rows = [aRows retain];
     }
 
     return self;
@@ -23,16 +23,31 @@
 
 - (void)dealloc
 {
-    [title release];
-    [rows release];
+    [_title release];
+    [_rows release];
+    _title = nil;
+    _rows = nil;
+    
     [super dealloc];
 }
+
+//- (void)setTitle:(NSString *)titleString
+//{
+//    [_title release];
+//    _title = [titleString copy];
+//}
+//
+//- (void)setRows:(NSArray<Row> *)rowsArray
+//{
+//    [_rows release];
+//    _rows = rowsArray;
+//}
 
 - (NSString *)description
 {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"title=%@", title];
-    [description appendFormat:@", rows=%@", rows];
+    [description appendFormat:@"title=%@", _title];
+    [description appendFormat:@", rows=%@", _rows];
     [description appendString:@">"];
     return description;
 }
@@ -45,17 +60,17 @@ static NSString *const ROWS = @"rows";
 
 - (NSDictionary *)toJSONDictionary
 {
-    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *info = [[NSMutableDictionary alloc] init] ;
     
-    if (title)
+    if (_title)
     {
-        [info setValue:title forKey:TITLE];
+        [info setValue:_title forKey:TITLE];
     }
     
-    if (rows)
+    if (_rows)
     {
         NSMutableArray *array = [NSMutableArray array];
-        for(Row *row in rows)
+        for(Row *row in _rows)
         {
             [array addObject:[row toJSONDictionary]];
         }
@@ -72,15 +87,15 @@ static NSString *const ROWS = @"rows";
     
     if(json[TITLE] && json[TITLE]!=[NSNull null])
     {
-        object->title = json[TITLE];
+        object.title = json[TITLE];
     }
     
-    NSMutableArray<Row> *array = (NSMutableArray<Row> *)[NSMutableArray array];
+    NSMutableArray<Row> *array = (NSMutableArray<Row> *)[NSMutableArray array] ;
     for(NSDictionary *dic in json[ROWS])
     {
         [array addObject:[Row fromJSONDictionary:dic]];
     }
-    object->rows = array;
+    object.rows = array;
     
     return object;
 }

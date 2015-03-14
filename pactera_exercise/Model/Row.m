@@ -15,9 +15,9 @@
     self = [super init];
     if (self)
     {
-        title = [aTitle copy];
-        description = [aDescription copy];
-        imageHref = [anImageHref copy];
+        _title = [aTitle copy];
+        _desc = [aDescription copy];
+        _imageHref = [anImageHref copy];
     }
 
     return self;
@@ -26,21 +26,43 @@
 
 - (void)dealloc
 {
-    [title release];
-    [description release];
-    [imageHref release];
+    [_title release];
+    [_desc release];
+    [_imageHref release];
+    
+    _title = nil;
+    _desc = nil;
+    _imageHref = nil;
     
     [super dealloc];
 }
 
+//- (void)setTitle:(NSString *)titleString
+//{
+//    [_title release];
+//    _title = [titleString copy];
+//}
+//
+//- (void)setDesc:(NSString *)descString
+//{
+//    [_desc release];
+//    _desc = [descString copy];
+//}
+//
+//- (void)setImageHref:(NSString *)imageHrefString
+//{
+//    [_imageHref release];
+//    _imageHref = [imageHrefString copy];
+//}
+
 - (NSString *)description
 {
-    NSMutableString *desc = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [desc appendFormat:@"title=%@", title];
-    [desc appendFormat:@", description=%@", description];
-    [desc appendFormat:@", imageHref=%@", imageHref];
-    [desc appendString:@">"];
-    return desc;
+    NSMutableString *d = [[NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])] retain];
+    [d appendFormat:@"title=%@", _title];
+    [d appendFormat:@", description=%@", _desc];
+    [d appendFormat:@", imageHref=%@", _imageHref];
+    [d appendString:@">"];
+    return d;
 }
 
 
@@ -54,19 +76,19 @@ static NSString *const IMAGE_HERF = @"imageHref";
 {
     NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
     
-    if (title)
+    if (_title)
     {
-        [info setValue:title forKey:TITLE];
+        [info setValue:_title forKey:TITLE];
     }
     
-    if (description)
+    if (_desc)
     {
-        [info setValue:description forKey:DESCRPTION];
+        [info setValue:_desc forKey:DESCRPTION];
     }
     
-    if (imageHref)
+    if (_imageHref)
     {
-        [info setValue:imageHref forKey:IMAGE_HERF];
+        [info setValue:_imageHref forKey:IMAGE_HERF];
     }
     
     return info;
@@ -78,17 +100,17 @@ static NSString *const IMAGE_HERF = @"imageHref";
     
     if(json[TITLE] && json[TITLE]!=[NSNull null])
     {
-        object->title = json[TITLE];
+        object.title = json[TITLE];
     }
     
     if(json[DESCRPTION] && json[DESCRPTION]!=[NSNull null])
     {
-        object->description = json[DESCRPTION];
+        object.desc = json[DESCRPTION];
     }
     
     if(json[IMAGE_HERF] && json[IMAGE_HERF]!=[NSNull null])
     {
-        object->imageHref = json[IMAGE_HERF];
+        object.imageHref = json[IMAGE_HERF];
     }
     
     return object;

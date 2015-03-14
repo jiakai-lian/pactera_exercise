@@ -32,10 +32,11 @@
     NSString * imageHref = @"imageHrefimageHref";
     
     Row *row = [[Row alloc] initWithTitle:title description:description imageHref:imageHref];
-    XCTAssertTrue([row->title isEqualToString:title]);
-    XCTAssertTrue([row->description isEqualToString:description]);
-    XCTAssertTrue([row->imageHref isEqualToString:imageHref]);
+    XCTAssertTrue([row.title isEqualToString:title]);
+    XCTAssertTrue([row.desc isEqualToString:description]);
+    XCTAssertTrue([row.imageHref isEqualToString:imageHref]);
     
+    [row release];
 }
 
 
@@ -54,6 +55,10 @@
     XCTAssertTrue([desc containsString:title]);
     XCTAssertTrue([desc containsString:description]);
     XCTAssertTrue([desc containsString:imageHref]);
+    
+    
+    [row release];
+    [desc release];
 }
 
 - (void)testRowToJSONString {
@@ -71,6 +76,9 @@
     XCTAssertTrue([json containsString:title]);
     XCTAssertTrue([json containsString:description]);
     XCTAssertTrue([json containsString:imageHref]);
+    
+    [row release];
+    [json release];
 }
 
 - (void)testRowFromJSONString {
@@ -82,9 +90,12 @@
 
     Row *row = [Row fromJSONString:original];
 
-    XCTAssertTrue([row->title isEqualToString:@"Hockey Night in Canada"]);
-    XCTAssertTrue([row->description isEqualToString:@"These Saturday night CBC broadcasts originally aired on radio in 1931. In 1952 they debuted on television and continue to unite (and divide) the nation each week."]);
-    XCTAssertTrue([row->imageHref isEqualToString:@"http://fyimusic.ca/wp-content/uploads/2008/06/hockey-night-in-canada.thumbnail.jpg"]);
+    XCTAssertTrue([row.title isEqualToString:@"Hockey Night in Canada"]);
+    XCTAssertTrue([row.desc isEqualToString:@"These Saturday night CBC broadcasts originally aired on radio in 1931. In 1952 they debuted on television and continue to unite (and divide) the nation each week."]);
+    XCTAssertTrue([row.imageHref isEqualToString:@"http://fyimusic.ca/wp-content/uploads/2008/06/hockey-night-in-canada.thumbnail.jpg"]);
+    
+    [row release];
+
 }
 
 
