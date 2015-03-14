@@ -19,7 +19,6 @@
 		3EF92B481AB44A55004239C3 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B471AB44A55004239C3 /* NSObject+JSON.m */; };
 		3EF92B4B1AB44B99004239C3 /* RowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B4A1AB44B99004239C3 /* RowTest.m */; };
 		3EF92B4D1AB44BA8004239C3 /* NewsFeedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */; };
-		3EF92B581AB45671004239C3 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EF92B551AB45671004239C3 /* API.plist */; };
 		3EF92B5C1AB4572D004239C3 /* NewsFeedNetworkDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */; };
 		3EF92B5F1AB4690F004239C3 /* NewsFeedNetworkDataServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B5E1AB4690F004239C3 /* NewsFeedNetworkDataServiceTest.m */; };
 		3EF92B601AB46ECB004239C3 /* NewsFeedNetworkDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */; };
@@ -58,7 +57,6 @@
 		3EF92B471AB44A55004239C3 /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
 		3EF92B4A1AB44B99004239C3 /* RowTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowTest.m; sourceTree = "<group>"; };
 		3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTest.m; sourceTree = "<group>"; };
-		3EF92B551AB45671004239C3 /* API.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		3EF92B561AB45671004239C3 /* NewsFeedDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedDataService.h; sourceTree = "<group>"; };
 		3EF92B5A1AB4572D004239C3 /* NewsFeedNetworkDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedNetworkDataService.h; sourceTree = "<group>"; };
 		3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedNetworkDataService.m; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 		3EF92B541AB45671004239C3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3EF92B551AB45671004239C3 /* API.plist */,
 				3EF92B561AB45671004239C3 /* NewsFeedDataService.h */,
 				3EF92B5A1AB4572D004239C3 /* NewsFeedNetworkDataService.h */,
 				3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */,
@@ -302,7 +299,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EF92B581AB45671004239C3 /* API.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

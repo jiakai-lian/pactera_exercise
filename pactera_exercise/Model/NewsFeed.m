@@ -24,6 +24,11 @@
 - (void)dealloc
 {
     [_title release];
+    
+    for(Row *row in _rows)
+    {
+        [row release];
+    }
     [_rows release];
     _title = nil;
     _rows = nil;

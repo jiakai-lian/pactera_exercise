@@ -12,8 +12,6 @@
 
 @implementation NewsFeedNetworkDataService
 
-
-//static NSString *const NEWS_FEED = @"newsFeed";
 static NSUInteger const TIMEOUT = 10;
 
 static NSString *const GET = @"get";
@@ -24,17 +22,9 @@ static NSString *const GET = @"get";
     sucessBlock = [success  retain];
     failureBlock = [failure retain];
     
-    //NSMutableDictionary *confDic = [[[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"API" ofType:@"plist"]] retain];
-    
-    
-    NSString *url = @"https://dl.dropboxusercontent.com/u/746330/facts.json";//[[confDic objectForKey:NEWS_FEED] retain];
-    
+    NSString *url = @"https://dl.dropboxusercontent.com/u/746330/facts.json";
     
     [self sendRequest:url HttpMethod:GET Data:nil];
-    
-    //[confDic release];
-    [url release];
-    
 }
 
 
