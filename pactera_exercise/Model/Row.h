@@ -5,7 +5,7 @@
 //  Created by jiakai lian on 14/03/2015.
 //  Copyright (c) 2015 jiakai. All rights reserved.
 //
-
+#import "NSObject+JSON.h"
 #import <Foundation/Foundation.h>
 @protocol Row
 
@@ -18,7 +18,7 @@
     NSString *description;  // description of the row
     NSString *imageHref;    //image url
 }
-- (instancetype)initWithTitle:(NSString *)aTitle description:(NSString *)aDescription imageHref:(NSString *)anImageHref;
+- (instancetype)initWithTitle:(NSString *)aTitle description:(NSString *)aDescription imageHref:(NSString *)anImageHref NS_DESIGNATED_INITIALIZER;
 
 - (NSString *)description;
 

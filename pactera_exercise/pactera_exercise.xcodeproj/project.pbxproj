@@ -16,6 +16,9 @@
 		3EF92B321AB4453B004239C3 /* pactera_exerciseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B311AB4453B004239C3 /* pactera_exerciseTests.m */; };
 		3EF92B411AB4468A004239C3 /* NewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B401AB4468A004239C3 /* NewsFeed.m */; };
 		3EF92B441AB44699004239C3 /* Row.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B431AB44699004239C3 /* Row.m */; };
+		3EF92B481AB44A55004239C3 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B471AB44A55004239C3 /* NSObject+JSON.m */; };
+		3EF92B4B1AB44B99004239C3 /* RowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B4A1AB44B99004239C3 /* RowTest.m */; };
+		3EF92B4D1AB44BA8004239C3 /* NewsFeedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,10 @@
 		3EF92B421AB44699004239C3 /* Row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Row.h; sourceTree = "<group>"; };
 		3EF92B431AB44699004239C3 /* Row.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Row.m; sourceTree = "<group>"; };
 		3EF92B451AB4472F004239C3 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		3EF92B461AB44A55004239C3 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
+		3EF92B471AB44A55004239C3 /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
+		3EF92B4A1AB44B99004239C3 /* RowTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowTest.m; sourceTree = "<group>"; };
+		3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +123,7 @@
 		3EF92B2E1AB4453B004239C3 /* pactera_exerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				3EF92B491AB44B8D004239C3 /* Model */,
 				3EF92B311AB4453B004239C3 /* pactera_exerciseTests.m */,
 				3EF92B2F1AB4453B004239C3 /* Supporting Files */,
 			);
@@ -133,6 +141,8 @@
 		3EF92B3B1AB445E1004239C3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3EF92B461AB44A55004239C3 /* NSObject+JSON.h */,
+				3EF92B471AB44A55004239C3 /* NSObject+JSON.m */,
 				3EF92B451AB4472F004239C3 /* Common.h */,
 			);
 			path = Common;
@@ -161,6 +171,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3EF92B491AB44B8D004239C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3EF92B4A1AB44B99004239C3 /* RowTest.m */,
+				3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF92B1E1AB4453B004239C3 /* ViewController.m in Sources */,
+				3EF92B481AB44A55004239C3 /* NSObject+JSON.m in Sources */,
 				3EF92B441AB44699004239C3 /* Row.m in Sources */,
 				3EF92B1B1AB4453B004239C3 /* AppDelegate.m in Sources */,
 				3EF92B411AB4468A004239C3 /* NewsFeed.m in Sources */,
@@ -275,6 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EF92B4D1AB44BA8004239C3 /* NewsFeedTest.m in Sources */,
+				3EF92B4B1AB44B99004239C3 /* RowTest.m in Sources */,
 				3EF92B321AB4453B004239C3 /* pactera_exerciseTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

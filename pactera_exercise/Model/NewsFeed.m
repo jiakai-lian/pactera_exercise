@@ -37,5 +37,53 @@
     return description;
 }
 
+#pragma mark - JSON Support
+
+static NSString *const TITLE = @"title";
+static NSString *const ROWS = @"rows";
+
+
+- (NSDictionary *)toJSONDictionary
+{
+    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    
+    if (title)
+    {
+        [info setValue:title forKey:TITLE];
+    }
+    
+    if (rows)
+    {
+        NSMutableArray *array = [NSMutableArray array];
+        for(Row *row in rows)
+        {
+            [array addObject:[row toJSONDictionary]];
+        }
+        [info setValue:array forKey:ROWS];
+    }
+    
+    
+    return info;
+}
+
++ (id)fromJSONDictionary:(NSDictionary *)json
+{
+    NewsFeed *object = [[NewsFeed alloc] init];
+    
+    if(json[TITLE] && json[TITLE]!=[NSNull null])
+    {
+        object->title = json[TITLE];
+    }
+    
+    NSMutableArray<Row> *array = (NSMutableArray<Row> *)[NSMutableArray array];
+    for(NSDictionary *dic in json[ROWS])
+    {
+        [array addObject:[Row fromJSONDictionary:dic]];
+    }
+    object->rows = array;
+    
+    return object;
+}
+
 
 @end

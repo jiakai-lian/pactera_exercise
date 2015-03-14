@@ -7,6 +7,7 @@
 //
 #import "Row.h"
 #import <Foundation/Foundation.h>
+#import "NSObject+JSON.h"
 
 @interface NewsFeed : NSObject
 {
@@ -14,7 +15,7 @@
     NSString *title;
     NSArray<Row> *rows;
 }
-- (instancetype)initWithTitle:(NSString *)aTitle rows:(NSArray <Row> *)aRows;
+- (instancetype)initWithTitle:(NSString *)aTitle rows:(NSArray <Row> *)aRows NS_DESIGNATED_INITIALIZER;
 
 - (NSString *)description;
 

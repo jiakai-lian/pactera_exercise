@@ -44,4 +44,55 @@
 }
 
 
+#pragma mark - JSON Support
+
+static NSString *const TITLE = @"title";
+static NSString *const DESCRPTION = @"description";
+static NSString *const IMAGE_HERF = @"imageHref";
+
+- (NSDictionary *)toJSONDictionary
+{
+    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    
+    if (title)
+    {
+        [info setValue:title forKey:TITLE];
+    }
+    
+    if (description)
+    {
+        [info setValue:description forKey:DESCRPTION];
+    }
+    
+    if (imageHref)
+    {
+        [info setValue:imageHref forKey:IMAGE_HERF];
+    }
+    
+    return info;
+}
+
++ (id)fromJSONDictionary:(NSDictionary *)json
+{
+    Row *object = [[Row alloc] init];
+    
+    if(json[TITLE] && json[TITLE]!=[NSNull null])
+    {
+        object->title = json[TITLE];
+    }
+    
+    if(json[DESCRPTION] && json[DESCRPTION]!=[NSNull null])
+    {
+        object->description = json[DESCRPTION];
+    }
+    
+    if(json[IMAGE_HERF] && json[IMAGE_HERF]!=[NSNull null])
+    {
+        object->imageHref = json[IMAGE_HERF];
+    }
+    
+    return object;
+}
+
+
 @end
