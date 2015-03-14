@@ -19,6 +19,10 @@
 		3EF92B481AB44A55004239C3 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B471AB44A55004239C3 /* NSObject+JSON.m */; };
 		3EF92B4B1AB44B99004239C3 /* RowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B4A1AB44B99004239C3 /* RowTest.m */; };
 		3EF92B4D1AB44BA8004239C3 /* NewsFeedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */; };
+		3EF92B581AB45671004239C3 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EF92B551AB45671004239C3 /* API.plist */; };
+		3EF92B5C1AB4572D004239C3 /* NewsFeedNetworkDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */; };
+		3EF92B5F1AB4690F004239C3 /* NewsFeedNetworkDataServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B5E1AB4690F004239C3 /* NewsFeedNetworkDataServiceTest.m */; };
+		3EF92B601AB46ECB004239C3 /* NewsFeedNetworkDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,11 @@
 		3EF92B471AB44A55004239C3 /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
 		3EF92B4A1AB44B99004239C3 /* RowTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowTest.m; sourceTree = "<group>"; };
 		3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTest.m; sourceTree = "<group>"; };
+		3EF92B551AB45671004239C3 /* API.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
+		3EF92B561AB45671004239C3 /* NewsFeedDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedDataService.h; sourceTree = "<group>"; };
+		3EF92B5A1AB4572D004239C3 /* NewsFeedNetworkDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedNetworkDataService.h; sourceTree = "<group>"; };
+		3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedNetworkDataService.m; sourceTree = "<group>"; };
+		3EF92B5E1AB4690F004239C3 /* NewsFeedNetworkDataServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedNetworkDataServiceTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +86,7 @@
 		3EF92B091AB4453B004239C3 = {
 			isa = PBXGroup;
 			children = (
+				3EF92B541AB45671004239C3 /* Service */,
 				3EF92B3B1AB445E1004239C3 /* Common */,
 				3EF92B3C1AB445E1004239C3 /* Controller */,
 				3EF92B3D1AB445E1004239C3 /* Model */,
@@ -123,6 +133,7 @@
 		3EF92B2E1AB4453B004239C3 /* pactera_exerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				3EF92B5D1AB468E9004239C3 /* Service */,
 				3EF92B491AB44B8D004239C3 /* Model */,
 				3EF92B311AB4453B004239C3 /* pactera_exerciseTests.m */,
 				3EF92B2F1AB4453B004239C3 /* Supporting Files */,
@@ -180,6 +191,25 @@
 				3EF92B4C1AB44BA8004239C3 /* NewsFeedTest.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3EF92B541AB45671004239C3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3EF92B551AB45671004239C3 /* API.plist */,
+				3EF92B561AB45671004239C3 /* NewsFeedDataService.h */,
+				3EF92B5A1AB4572D004239C3 /* NewsFeedNetworkDataService.h */,
+				3EF92B5B1AB4572D004239C3 /* NewsFeedNetworkDataService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3EF92B5D1AB468E9004239C3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3EF92B5E1AB4690F004239C3 /* NewsFeedNetworkDataServiceTest.m */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EF92B581AB45671004239C3 /* API.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EF92B601AB46ECB004239C3 /* NewsFeedNetworkDataService.m in Sources */,
 				3EF92B1E1AB4453B004239C3 /* ViewController.m in Sources */,
 				3EF92B481AB44A55004239C3 /* NSObject+JSON.m in Sources */,
 				3EF92B441AB44699004239C3 /* Row.m in Sources */,
@@ -296,7 +328,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF92B4D1AB44BA8004239C3 /* NewsFeedTest.m in Sources */,
+				3EF92B5C1AB4572D004239C3 /* NewsFeedNetworkDataService.m in Sources */,
 				3EF92B4B1AB44B99004239C3 /* RowTest.m in Sources */,
+				3EF92B5F1AB4690F004239C3 /* NewsFeedNetworkDataServiceTest.m in Sources */,
 				3EF92B321AB4453B004239C3 /* pactera_exerciseTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

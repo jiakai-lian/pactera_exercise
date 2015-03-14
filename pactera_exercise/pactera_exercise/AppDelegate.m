@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "NewsFeedNetworkDataService.h"
+#import "NewsFeed.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +18,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    _service = [[NewsFeedNetworkDataService alloc]init] ;
+    [_service getNewsFeedWithSucessBlock:^(NewsFeed *newsFeed) {
+        [newsFeed release];
+    } andFailureBlock:^(NSError *error) {
+        
+        [error release];
+    }];
     // Override point for customization after application launch.
     return YES;
 }
