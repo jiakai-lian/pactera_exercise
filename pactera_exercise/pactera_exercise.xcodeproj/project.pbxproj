@@ -14,6 +14,8 @@
 		3EF92B231AB4453B004239C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF92B221AB4453B004239C3 /* Images.xcassets */; };
 		3EF92B261AB4453B004239C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF92B241AB4453B004239C3 /* LaunchScreen.xib */; };
 		3EF92B321AB4453B004239C3 /* pactera_exerciseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B311AB4453B004239C3 /* pactera_exerciseTests.m */; };
+		3EF92B411AB4468A004239C3 /* NewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B401AB4468A004239C3 /* NewsFeed.m */; };
+		3EF92B441AB44699004239C3 /* Row.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF92B431AB44699004239C3 /* Row.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,11 @@
 		3EF92B2B1AB4453B004239C3 /* pactera_exerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pactera_exerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF92B301AB4453B004239C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EF92B311AB4453B004239C3 /* pactera_exerciseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pactera_exerciseTests.m; sourceTree = "<group>"; };
+		3EF92B3F1AB4468A004239C3 /* NewsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeed.h; sourceTree = "<group>"; };
+		3EF92B401AB4468A004239C3 /* NewsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeed.m; sourceTree = "<group>"; };
+		3EF92B421AB44699004239C3 /* Row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Row.h; sourceTree = "<group>"; };
+		3EF92B431AB44699004239C3 /* Row.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Row.m; sourceTree = "<group>"; };
+		3EF92B451AB4472F004239C3 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +70,13 @@
 		3EF92B091AB4453B004239C3 = {
 			isa = PBXGroup;
 			children = (
+				3EF92B3B1AB445E1004239C3 /* Common */,
+				3EF92B3C1AB445E1004239C3 /* Controller */,
+				3EF92B3D1AB445E1004239C3 /* Model */,
 				3EF92B141AB4453B004239C3 /* pactera_exercise */,
 				3EF92B2E1AB4453B004239C3 /* pactera_exerciseTests */,
 				3EF92B131AB4453B004239C3 /* Products */,
+				3EF92B3E1AB445FC004239C3 /* View */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +128,39 @@
 				3EF92B301AB4453B004239C3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3EF92B3B1AB445E1004239C3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3EF92B451AB4472F004239C3 /* Common.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3EF92B3C1AB445E1004239C3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3EF92B3D1AB445E1004239C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3EF92B3F1AB4468A004239C3 /* NewsFeed.h */,
+				3EF92B401AB4468A004239C3 /* NewsFeed.m */,
+				3EF92B421AB44699004239C3 /* Row.h */,
+				3EF92B431AB44699004239C3 /* Row.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3EF92B3E1AB445FC004239C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF92B1E1AB4453B004239C3 /* ViewController.m in Sources */,
+				3EF92B441AB44699004239C3 /* Row.m in Sources */,
 				3EF92B1B1AB4453B004239C3 /* AppDelegate.m in Sources */,
+				3EF92B411AB4468A004239C3 /* NewsFeed.m in Sources */,
 				3EF92B181AB4453B004239C3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
