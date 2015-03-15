@@ -182,13 +182,15 @@
     
     Row *row = (Row *)[[feed.rows objectAtIndex:indexPath.row] retain];
 
-    UIFont *font = [UIFont systemFontOfSize:17.0];
+    UIFont *font = [[UIFont systemFontOfSize:17.0] retain];
     UITextView *calculationView = [[UITextView alloc] init];
     [calculationView setFont:font];
     [calculationView setTextAlignment:NSTextAlignmentLeft];
     [calculationView setText:row.desc];
     CGSize size = [calculationView sizeThatFits:CGSizeMake(sWidth, FLT_MAX)];
     
+    [font release];
+    [calculationView release];
     [row release];
     
     return sMinimumHeight > size.height ? sMinimumHeight + sFixedHeight : size.height + sFixedHeight;
