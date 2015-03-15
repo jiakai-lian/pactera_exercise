@@ -20,4 +20,4 @@
 
 9. No xib file as required.
 
-10.Dynamic row height as required.
+10. Dynamic row height as required.
