@@ -10,13 +10,13 @@
 
 4. Corresponding unit test cases for those fundamental classes and methods.
 
-5. NO ARC as required.
+5. No ARC as required.
 
 6. Pull down to refresh
 
 7. Load images lazily and asynchronously while displaying rows.
 
-8. Has a simple image caching mechanism to avoid reloading images all the time.
+8. Has a simple image caching mechanism to avoid re-downloading images all the time.
 
 9. No xib file as required.
 
