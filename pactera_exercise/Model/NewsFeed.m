@@ -82,8 +82,11 @@ static NSString *const ROWS = @"rows";
         [info setValue:array forKey:ROWS];
     }
 
+    NSDictionary *dic = info.copy;
 
-    return info;
+    [info release];
+
+    return dic;
 }
 
 + (id)fromJSONDictionary:(NSDictionary *)json

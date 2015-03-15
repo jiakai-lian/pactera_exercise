@@ -68,8 +68,8 @@
 #pragma mark - JSON Support
 
 static NSString *const TITLE = @"title";
-static NSString *const DESCRPTION = @"description";
-static NSString *const IMAGE_HERF = @"imageHref";
+static NSString *const DESCRIPTION = @"description";
+static NSString *const IMAGE_HREF = @"imageHref";
 
 - (NSDictionary *)toJSONDictionary
 {
@@ -82,15 +82,19 @@ static NSString *const IMAGE_HERF = @"imageHref";
 
     if (_desc)
     {
-        [info setValue:_desc forKey:DESCRPTION];
+        [info setValue:_desc forKey:DESCRIPTION];
     }
 
     if (_imageHref)
     {
-        [info setValue:_imageHref forKey:IMAGE_HERF];
+        [info setValue:_imageHref forKey:IMAGE_HREF];
     }
 
-    return info;
+    NSDictionary *dic = info.copy;
+
+    [info release];
+
+    return dic;
 }
 
 + (id)fromJSONDictionary:(NSDictionary *)json
@@ -102,14 +106,14 @@ static NSString *const IMAGE_HERF = @"imageHref";
         object.title = json[TITLE];
     }
 
-    if (json[DESCRPTION] && json[DESCRPTION] != [NSNull null])
+    if (json[DESCRIPTION] && json[DESCRIPTION] != [NSNull null])
     {
-        object.desc = json[DESCRPTION];
+        object.desc = json[DESCRIPTION];
     }
 
-    if (json[IMAGE_HERF] && json[IMAGE_HERF] != [NSNull null])
+    if (json[IMAGE_HREF] && json[IMAGE_HREF] != [NSNull null])
     {
-        object.imageHref = json[IMAGE_HERF];
+        object.imageHref = json[IMAGE_HREF];
     }
 
     return object;

@@ -13,12 +13,12 @@
 - (NSString *)toJSONString;
 
 //convert to json string
-- (NSMutableDictionary *)toJSONDictionary;
+- (NSDictionary *)toJSONDictionary;
 
 //convert to json dictionary
-+ (id)fromJSONDictionary:(NSDictionary *)dictionary;
++ (instancetype)fromJSONDictionary:(NSDictionary *)dictionary;
 
 
-+ (id)fromJSONString:(NSString *)str;
++ (instancetype)fromJSONString:(NSString *)str;
 
 @end

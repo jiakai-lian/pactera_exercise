@@ -13,7 +13,7 @@
 {
 @private
     NSURLConnection *connection;
-    SucessBlock sucessBlock;
+    SuccessBlock successBlock;
     FailureBlock failureBlock;
 }
 

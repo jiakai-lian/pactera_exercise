@@ -36,7 +36,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"GetNewsFeed request"];
 
 
-    [service getNewsFeedWithSucessBlock:^(NewsFeed *newsFeed)
+    [service getNewsFeedWithSuccessBlock:^(NewsFeed *newsFeed)
     {
         XCTAssertNotNil(newsFeed);
         NSLog(@"newsfeed = %@", [newsFeed toJSONString]);
@@ -45,7 +45,7 @@
 
         [expectation fulfill];
 
-    }                   andFailureBlock:^(NSError *error)
+    }                    andFailureBlock:^(NSError *error)
     {
         XCTAssertTrue(NO);
 

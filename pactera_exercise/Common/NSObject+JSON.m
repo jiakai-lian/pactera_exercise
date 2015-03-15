@@ -24,22 +24,22 @@
     return str;
 }
 
-//!!!!!!!  this mehtod shouldn't be called. It has to be override by sub classes
+//!!!!!!!  this method shouldn't be called. It has to be override by sub classes
 - (NSDictionary *)toJSONDictionary
 {
     LOG("this mehtod shouldn't be called. It has to be override by sub classes");
-    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    NSDictionary *info = [[NSDictionary alloc] init];
     return info;
 }
 
-//!!!!!!! this mehtod shouldn't be called. It has to be override by sub classes
-+ (id)fromJSONDictionary:(NSDictionary *)json
+//!!!!!!! this method shouldn't be called. It has to be override by sub classes
++ (instancetype)fromJSONDictionary:(NSDictionary *)json
 {
     LOG("this mehtod shouldn't be called. It has to be override by sub classes");
     return nil;
 }
 
-+ (id)fromJSONString:(NSString *)str
++ (instancetype)fromJSONString:(NSString *)str
 {
     if (!str)
     {

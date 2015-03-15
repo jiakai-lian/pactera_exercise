@@ -1,7 +1,7 @@
 //
 //  NewsFeedTableViewController.m
 //  pactera_exercise
-//
+//  A table view controller to display news feed
 //  Created by jiakai lian on 15/03/2015.
 //  Copyright (c) 2015 jiakai. All rights reserved.
 //
@@ -66,14 +66,14 @@
 
 - (void)getLatestNewsFeed
 {
-    [_appDelegate.service getNewsFeedWithSucessBlock:^(NewsFeed *newsFeed)
+    [_appDelegate.service getNewsFeedWithSuccessBlock:^(NewsFeed *newsFeed)
     {
 
         feed = [newsFeed retain];
         self.title = feed.title;
         [self performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 
-    }                                andFailureBlock:^(NSError *error)
+    }                                 andFailureBlock:^(NSError *error)
     {
         if (feed)
         {
@@ -158,7 +158,7 @@
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID forIndexPath:indexPath];
 
     // Configure the cell...
-    Row *row = [[feed.rows objectAtIndex:indexPath.row] retain];
+    Row *row = (Row *)[[feed.rows objectAtIndex:indexPath.row] retain];
     cell.labelTitle.text = row.title;
     cell.labelDesc.text = row.desc;
     cell.imageViewRow.image = nil;

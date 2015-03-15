@@ -145,7 +145,7 @@
 
     XCTAssertTrue([feed.title isEqualToString:@"About Canada"]);
     XCTAssertTrue(feed.rows.count == 1);
-    Row *row = [[feed.rows firstObject] retain];
+    Row *row = (Row *)[[feed.rows firstObject] retain];
     XCTAssertTrue([row.title isEqualToString:@"Beavers"]);
     XCTAssertTrue([row.desc isEqualToString:@"Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony"]);
     XCTAssertTrue([row.imageHref isEqualToString:@"http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg"]);
