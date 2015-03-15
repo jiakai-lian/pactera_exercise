@@ -33,8 +33,8 @@ static NSString *const GET = @"get";
 
 - (void)getNewsFeedWithSucessBlock:(SucessBlock)success andFailureBlock:(FailureBlock)failure;
 {
-    sucessBlock = success;
-    failureBlock = failure;
+    sucessBlock = Block_copy(success);
+    failureBlock = Block_copy(failure);
 
     NSString *url = @"https://dl.dropboxusercontent.com/u/746330/facts.json";
 
@@ -112,11 +112,6 @@ static NSString *const GET = @"get";
 
     _newsFeed = [[NewsFeed fromJSONString:json] retain];
 
-    if (sucessBlock)
-    {
-        sucessBlock(_newsFeed);
-    }
-
     [json release];
     json = nil;
 
@@ -125,6 +120,12 @@ static NSString *const GET = @"get";
 
     [_responseData release];
     _responseData = nil;
+
+    if (sucessBlock)
+    {
+        sucessBlock(_newsFeed);
+    }
+
 }
 
 

@@ -7,7 +7,6 @@
 //
 
 #import "Row.h"
-#import "Common.h"
 
 @implementation Row
 - (instancetype)initWithTitle:(NSString *)aTitle description:(NSString *)aDescription imageHref:(NSString *)anImageHref
