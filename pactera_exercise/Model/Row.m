@@ -57,7 +57,7 @@
 
 - (NSString *)description
 {
-    NSMutableString *d = [[NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])] retain];
+    NSMutableString *d = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])] ;
     [d appendFormat:@"title=%@", _title];
     [d appendFormat:@", description=%@", _desc];
     [d appendFormat:@", imageHref=%@", _imageHref];

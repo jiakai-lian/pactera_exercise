@@ -32,20 +32,27 @@
     NSString * description = @"RowDescription";
     NSString * imageHref = @"RowImageHref";
     
-    Row *row = [[Row alloc] initWithTitle:title description:description imageHref:imageHref];
-    NSArray<Row> * array = (NSArray<Row>  *)[[NSArray alloc]initWithObjects:row, nil];
+    Row *row = [[[Row alloc] initWithTitle:title description:description imageHref:imageHref] retain];
+    NSArray<Row> * array = (NSArray<Row>  *)[[NSArray alloc]initWithObjects:row, nil] ;
     
-    NewsFeed *feed = [[NewsFeed alloc] initWithTitle:titleFeed rows:array];
+    NewsFeed *feed = [[NewsFeed alloc] initWithTitle:titleFeed rows:array] ;
     
     XCTAssertTrue([feed.title isEqualToString:titleFeed]);
     XCTAssertTrue(feed.rows.count == 1 );
     XCTAssertTrue([[feed.rows firstObject] isEqual:row] );
     
-    [row release];
-    [array release];
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    NSLog(@"\n========Retain count  array = %d", [array retainCount]);
+    NSLog(@"\n========Retain count  feed = %d", [feed retainCount]);
     [feed release];
     
-}
+    NSLog(@"\n========Retain count  array = %d", [array retainCount]);
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    [array release];
+    
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    [row release];
+    }
 
 
 - (void)testNewsFeedDescription {
@@ -54,10 +61,10 @@
     NSString * description = @"descriptiondescription";
     NSString * imageHref = @"imageHrefimageHref";
     
-    Row *row = [[Row alloc] initWithTitle:title description:description imageHref:imageHref];
+    Row *row = [[[Row alloc] initWithTitle:title description:description imageHref:imageHref] retain];
     NSArray<Row> * array = (NSArray<Row>  *)[[NSArray alloc]initWithObjects:row, nil];
     
-    NewsFeed *feed = [[NewsFeed alloc] initWithTitle:titleFeed rows:array];
+    NewsFeed *feed = [[NewsFeed alloc] initWithTitle:titleFeed rows:array] ;
     
     NSString * desc = [feed description] ;
     NSLog(@"row desc =  %@", desc);
@@ -68,9 +75,17 @@
     XCTAssertTrue([desc containsString:description]);
     XCTAssertTrue([desc containsString:imageHref]);
     
-    [row release];
-    [array release];
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    NSLog(@"\n========Retain count  array = %d", [array retainCount]);
+    NSLog(@"\n========Retain count  feed = %d", [feed retainCount]);
     [feed release];
+    
+    NSLog(@"\n========Retain count  array = %d", [array retainCount]);
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    [array release];
+    
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    [row release];
 }
 
 
@@ -80,7 +95,7 @@
     NSString * description = @"RowDescription";
     NSString * imageHref = @"RowImageHref";
     
-    Row *row = [[Row alloc] initWithTitle:title description:description imageHref:imageHref];
+    Row *row = [[[Row alloc] initWithTitle:title description:description imageHref:imageHref] retain];
     NSArray<Row> * array = (NSArray<Row>  *)[[NSArray alloc]initWithObjects:row, nil];
     
     NewsFeed *feed = [[NewsFeed alloc] initWithTitle:titleFeed rows:array];
@@ -95,10 +110,17 @@
     XCTAssertTrue([json containsString:description]);
     XCTAssertTrue([json containsString:imageHref]);
     
-    [row release];
-    [array release];
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    NSLog(@"\n========Retain count  array = %d", [array retainCount]);
+    NSLog(@"\n========Retain count  feed = %d", [feed retainCount]);
     [feed release];
-    [json release];
+    
+    NSLog(@"\n========Retain count  array = %d", [array retainCount]);
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    [array release];
+    
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    [row release];
 }
 
 - (void)testRowFromJSONString {
@@ -117,13 +139,17 @@
     
     XCTAssertTrue([feed.title isEqualToString:@"About Canada"]);
     XCTAssertTrue(feed.rows.count == 1);
-    Row *row= [feed.rows firstObject];
+    Row *row= [[feed.rows firstObject] retain];
     XCTAssertTrue([row.title isEqualToString:@"Beavers"]);
     XCTAssertTrue([row.desc isEqualToString:@"Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony"]);
     XCTAssertTrue([row.imageHref isEqualToString:@"http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg"]);
     
-    [row release];
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    NSLog(@"\n========Retain count  feed = %d", [feed retainCount]);
     [feed release];
+    
+    NSLog(@"\n========Retain count  row = %d", [row retainCount]);
+    [row release];
 }
 
 

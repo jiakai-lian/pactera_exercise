@@ -19,11 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    _service = [[NewsFeedNetworkDataService alloc]init] ;
+    _service = [[NewsFeedNetworkDataService alloc]init];
     [_service getNewsFeedWithSucessBlock:^(NewsFeed *newsFeed) {
+        [newsFeed retain];
         [newsFeed release];
     } andFailureBlock:^(NSError *error) {
-        
+        [error retain];
         [error release];
     }];
     // Override point for customization after application launch.
@@ -50,6 +51,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [_service release];
 }
 
 @end

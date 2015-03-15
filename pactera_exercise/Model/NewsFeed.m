@@ -98,7 +98,7 @@ static NSString *const ROWS = @"rows";
     NSMutableArray<Row> *array = (NSMutableArray<Row> *)[NSMutableArray array] ;
     for(NSDictionary *dic in json[ROWS])
     {
-        [array addObject:[Row fromJSONDictionary:dic]];
+        [array addObject:[Row fromJSONDictionary:dic] ];
     }
     object.rows = array;
     
