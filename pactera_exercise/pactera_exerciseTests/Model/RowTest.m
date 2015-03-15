@@ -34,12 +34,10 @@
     NSString *description = @"descriptiondescription";
     NSString *imageHref = @"imageHrefimageHref";
 
-    Row *row = [[Row alloc] initWithTitle:title description:description imageHref:imageHref];
+    Row *row = [[[Row alloc] initWithTitle:title description:description imageHref:imageHref] autorelease];
     XCTAssertTrue([row.title isEqualToString:title]);
     XCTAssertTrue([row.desc isEqualToString:description]);
     XCTAssertTrue([row.imageHref isEqualToString:imageHref]);
-
-    [row release];
 }
 
 
@@ -49,9 +47,9 @@
     NSString *description = @"descriptiondescription";
     NSString *imageHref = @"imageHrefimageHref";
 
-    Row *row = [[Row alloc] initWithTitle:title description:description imageHref:imageHref];
+    Row *row = [[[Row alloc] initWithTitle:title description:description imageHref:imageHref] autorelease];
 
-    NSString *desc = [row description];
+    NSString *desc = [[row description] autorelease];
 
     NSLog(@"row desc =  %@", desc);
 
@@ -59,10 +57,6 @@
     XCTAssertTrue([desc containsString:title]);
     XCTAssertTrue([desc containsString:description]);
     XCTAssertTrue([desc containsString:imageHref]);
-
-
-    [row release];
-    [desc release];
 }
 
 - (void)testRowToJSONString
@@ -71,9 +65,9 @@
     NSString *description = @"descriptiondescription";
     NSString *imageHref = @"imageHrefimageHref";
 
-    Row *row = [[Row alloc] initWithTitle:title description:description imageHref:imageHref];
+    Row *row = [[[Row alloc] initWithTitle:title description:description imageHref:imageHref] autorelease];
 
-    NSString *json = [row toJSONString];
+    NSString *json = [[row toJSONString] autorelease];
 
     NSLog(@"row desc =  %@", json);
 
@@ -81,9 +75,6 @@
     XCTAssertTrue([json containsString:title]);
     XCTAssertTrue([json containsString:description]);
     XCTAssertTrue([json containsString:imageHref]);
-
-    [row release];
-    [json release];
 }
 
 - (void)testRowFromJSONString
@@ -94,13 +85,11 @@
             "\t\"imageHref\":\"http://fyimusic.ca/wp-content/uploads/2008/06/hockey-night-in-canada.thumbnail.jpg\"\n"
             "\t}";
 
-    Row *row = [Row fromJSONString:original];
+    Row *row = [[Row fromJSONString:original] autorelease];
 
     XCTAssertTrue([row.title isEqualToString:@"Hockey Night in Canada"]);
     XCTAssertTrue([row.desc isEqualToString:@"These Saturday night CBC broadcasts originally aired on radio in 1931. In 1952 they debuted on television and continue to unite (and divide) the nation each week."]);
     XCTAssertTrue([row.imageHref isEqualToString:@"http://fyimusic.ca/wp-content/uploads/2008/06/hockey-night-in-canada.thumbnail.jpg"]);
-
-    [row release];
 
 }
 
