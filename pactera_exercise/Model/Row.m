@@ -73,7 +73,7 @@ static NSString *const IMAGE_HREF = @"imageHref";
 
 - (NSDictionary *)toJSONDictionary
 {
-    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *info = [[[NSMutableDictionary alloc] init] autorelease];
 
     if (_title)
     {
@@ -92,12 +92,10 @@ static NSString *const IMAGE_HREF = @"imageHref";
 
     NSDictionary *dic = info.copy;
 
-    [info release];
-
     return dic;
 }
 
-+ (id)fromJSONDictionary:(NSDictionary *)json
++ (instancetype)fromJSONDictionary:(NSDictionary *)json
 {
     Row *object = [[Row alloc] init];
 

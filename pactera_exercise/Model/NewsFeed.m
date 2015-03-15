@@ -65,7 +65,7 @@ static NSString *const ROWS = @"rows";
 
 - (NSDictionary *)toJSONDictionary
 {
-    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *info = [[[NSMutableDictionary alloc] init] autorelease];
 
     if (_title)
     {
@@ -84,12 +84,10 @@ static NSString *const ROWS = @"rows";
 
     NSDictionary *dic = info.copy;
 
-    [info release];
-
     return dic;
 }
 
-+ (id)fromJSONDictionary:(NSDictionary *)json
++ (instancetype)fromJSONDictionary:(NSDictionary *)json
 {
     NewsFeed *object = [[NewsFeed alloc] init];
 
@@ -98,11 +96,13 @@ static NSString *const ROWS = @"rows";
         object.title = json[TITLE];
     }
 
-    NSMutableArray <Row> *array = (NSMutableArray <Row> *) [NSMutableArray array];
+    NSMutableArray <Row> *array = [(NSMutableArray <Row> *) [NSMutableArray array] autorelease];
     for (NSDictionary *dic in json[ROWS])
     {
         [array addObject:[Row fromJSONDictionary:dic]];
     }
+    
+    [array retain];
     object.rows = array;
 
     return object;

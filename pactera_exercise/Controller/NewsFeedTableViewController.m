@@ -35,7 +35,7 @@
     _appDelegate = APP_DELEGATE;
 
     //init refresh control
-    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl = [[[UIRefreshControl alloc] init] autorelease];
     self.refreshControl.backgroundColor = [UIColor purpleColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
@@ -220,17 +220,18 @@
         else
         {
             //otherwise, load from network
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:row.imageHref]];
-            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+            NSURLRequest *request = [[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:row.imageHref]] autorelease];
+            NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
             [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
             {
                 if (!error)
                 {
                     LOG(@"indexPath  = %@", indexPath);
-                    UIImage *image = [[UIImage alloc] initWithData:data];
+                    UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
                     if (image)
                     {
                         //save to cache first
+                        [image retain];
                         imageCache[row.imageHref] = image;
                         
                         //only when the row is visiable, load the downloaded image to the cell
@@ -248,9 +249,6 @@
                     LOG(@"indexPath  = %@   error = %@", indexPath, error);
                 }
             }];
-
-            [request release];
-            [queue release];
         }
     }
 
