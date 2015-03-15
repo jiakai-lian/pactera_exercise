@@ -47,17 +47,17 @@ static NSString *const GET = @"get";
 
 #pragma mark - NSURLConnectionDelegate
 
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+- (BOOL)connection:(NSURLConnection *)conn canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
     return YES;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+- (void)connection:(NSURLConnection *)conn didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
     [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+- (void)connection:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)response
 {
     LOG(@"Retain count  %d", [_responseData retainCount]);
     [_responseData retain];
@@ -65,7 +65,7 @@ static NSString *const GET = @"get";
     [_responseData release];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
 {
     [data retain];
     [_responseData retain];
