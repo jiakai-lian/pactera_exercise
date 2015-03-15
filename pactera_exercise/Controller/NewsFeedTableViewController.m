@@ -173,6 +173,27 @@
     return feed.rows.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static const int sTitleHeight = 56;
+    static const int sGap = 14;
+    static const int sFixedHeight = sTitleHeight + sGap;
+    static const int sMinimumHeight = 100;
+    static const int sWidth = 230;//only for iphone 4 landscape mode
+    
+    Row *row = (Row *)[[feed.rows objectAtIndex:indexPath.row] retain];
+
+    UIFont *font = [UIFont systemFontOfSize:17.0];
+    UITextView *calculationView = [[UITextView alloc] init];
+    [calculationView setFont:font];
+    [calculationView setTextAlignment:NSTextAlignmentLeft];
+    [calculationView setText:row.desc];
+    CGSize size = [calculationView sizeThatFits:CGSizeMake(sWidth, FLT_MAX)];
+    
+    [row release];
+    
+    return sMinimumHeight > size.height ? sMinimumHeight + sFixedHeight : size.height + sFixedHeight;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -237,3 +258,4 @@
 
 
 @end
+

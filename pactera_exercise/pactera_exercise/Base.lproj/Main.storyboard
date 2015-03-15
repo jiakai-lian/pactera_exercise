@@ -23,12 +23,13 @@
                                             <rect key="frame" x="8" y="12" width="559" height="56"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="56" id="3hy-Ta-Kuy"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="D4a-iY-fzL"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.3803921569" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfx-5T-Mae">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfx-5T-Mae">
                                             <rect key="frame" x="8" y="77" width="386" height="118"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
