@@ -7,6 +7,7 @@
 //
 #import "NSObject+JSON.h"
 #import <Foundation/Foundation.h>
+
 @protocol Row
 
 @end
@@ -19,9 +20,9 @@
 //    NSString *imageHref;    //image url
 //}
 
-@property(nonatomic,copy) NSString *title;
-@property(nonatomic,copy) NSString *desc;
-@property(nonatomic,copy) NSString *imageHref;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *desc;
+@property(nonatomic, copy) NSString *imageHref;
 
 - (instancetype)initWithTitle:(NSString *)aTitle description:(NSString *)aDescription imageHref:(NSString *)anImageHref NS_DESIGNATED_INITIALIZER;
 

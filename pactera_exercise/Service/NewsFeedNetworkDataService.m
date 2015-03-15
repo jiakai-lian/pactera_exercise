@@ -20,26 +20,26 @@ static NSString *const GET = @"get";
 {
     [connection release];
     connection = nil;
-    
+
     [_responseData release];
     _responseData = nil;
-    
+
     [_newsFeed release];
     _newsFeed = nil;
-    
+
     [super dealloc];
 }
 
 
-- (void)getNewsFeedWithSucessBlock:(SucessBlock)success andFailureBlock:(FailureBlock) failure;
+- (void)getNewsFeedWithSucessBlock:(SucessBlock)success andFailureBlock:(FailureBlock)failure;
 {
     sucessBlock = success;
     failureBlock = failure;
-    
+
     NSString *url = @"https://dl.dropboxusercontent.com/u/746330/facts.json";
-    
+
     [self sendRequest:url HttpMethod:GET Data:nil];
-    
+
     [url release];
 }
 
@@ -47,11 +47,13 @@ static NSString *const GET = @"get";
 
 #pragma mark - NSURLConnectionDelegate
 
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
     return YES;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
     [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
 }
 
@@ -72,7 +74,7 @@ static NSString *const GET = @"get";
     // receivedData is an instance variable declared elsewhere.
 
     [_responseData appendData:data];
-    
+
     [_responseData release];
     [data release];
 }
@@ -81,46 +83,46 @@ static NSString *const GET = @"get";
   didFailWithError:(NSError *)error
 {
     [error retain];
-    
+
     [connection release];
     connection = nil;
-    
+
     [_responseData release];
     _responseData = nil;
-    
+
     // inform error
     NSLog(@"Connection failed! Error - %@ %@",
-          [error localizedDescription],
-          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    
-    if(failureBlock)
+            [error localizedDescription],
+            [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+
+    if (failureBlock)
     {
         failureBlock(error);
     }
-    
+
     [error release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn
 {
-    NSLog(@"Succeeded! Received %lu bytes of data",(unsigned long)[_responseData length]);
-    
-    NSString * json= [[NSString alloc] initWithData:_responseData encoding:NSASCIIStringEncoding];
-    NSLog(@"data = %@",json);
-    
+    NSLog(@"Succeeded! Received %lu bytes of data", (unsigned long) [_responseData length]);
+
+    NSString *json = [[NSString alloc] initWithData:_responseData encoding:NSASCIIStringEncoding];
+    NSLog(@"data = %@", json);
+
     _newsFeed = [[NewsFeed fromJSONString:json] retain];
-    
-    if(sucessBlock)
+
+    if (sucessBlock)
     {
         sucessBlock(_newsFeed);
     }
-    
+
     [json release];
     json = nil;
-    
+
     [connection release];
     connection = nil;
-    
+
     [_responseData release];
     _responseData = nil;
 }
@@ -134,42 +136,43 @@ static NSString *const GET = @"get";
     [url retain];
     [httpMethod retain];
     [data retain];
-    
-    _responseData = [[NSMutableData dataWithCapacity: 0] retain];//clear the response first
+
+    _responseData = [[NSMutableData dataWithCapacity:0] retain];//clear the response first
     LOG(@"Retain count  %d", [_responseData retainCount]);
-    
+
     NSMutableURLRequest *request = [[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
-                                                           cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-                                                       timeoutInterval:TIMEOUT] retain];
-    
+                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                        timeoutInterval:TIMEOUT] retain];
+
     LOG(@"URL = %@", url);
-    
+
     [request setHTTPMethod:httpMethod];
-    
+
     //[request addValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    
+
     //[request setHTTPBody:data];
-    
-    connection=[[NSURLConnection alloc] initWithRequest:request delegate:self] ;
-    
-    
-    if (!connection) {
+
+    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+
+
+    if (!connection)
+    {
         // Release the receivedData object.
         [_responseData release];
         _responseData = nil;
-        
+
         // Inform the user that the connection failed.
     }
-    
-    
+
+
     LOG(@"Retain count  %d", [_responseData retainCount]);
-    
+
     [request release];
-    
+
     [url release];
     [httpMethod release];
     [data release];
-    
+
     return nil;
 }
 

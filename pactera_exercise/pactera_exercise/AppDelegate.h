@@ -11,9 +11,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property(strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, retain) NSObject<NewsFeedDataService> *service;
+@property(nonatomic, retain) NSObject <NewsFeedDataService> *service;
 
 
 @end

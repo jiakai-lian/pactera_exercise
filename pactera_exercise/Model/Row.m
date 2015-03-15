@@ -29,11 +29,11 @@
     [_title release];
     [_desc release];
     [_imageHref release];
-    
+
     _title = nil;
     _desc = nil;
     _imageHref = nil;
-    
+
     [super dealloc];
 }
 
@@ -57,7 +57,7 @@
 
 - (NSString *)description
 {
-    NSMutableString *d = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])] ;
+    NSMutableString *d = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [d appendFormat:@"title=%@", _title];
     [d appendFormat:@", description=%@", _desc];
     [d appendFormat:@", imageHref=%@", _imageHref];
@@ -75,44 +75,44 @@ static NSString *const IMAGE_HERF = @"imageHref";
 - (NSDictionary *)toJSONDictionary
 {
     NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
-    
+
     if (_title)
     {
         [info setValue:_title forKey:TITLE];
     }
-    
+
     if (_desc)
     {
         [info setValue:_desc forKey:DESCRPTION];
     }
-    
+
     if (_imageHref)
     {
         [info setValue:_imageHref forKey:IMAGE_HERF];
     }
-    
+
     return info;
 }
 
 + (id)fromJSONDictionary:(NSDictionary *)json
 {
     Row *object = [[Row alloc] init];
-    
-    if(json[TITLE] && json[TITLE]!=[NSNull null])
+
+    if (json[TITLE] && json[TITLE] != [NSNull null])
     {
         object.title = json[TITLE];
     }
-    
-    if(json[DESCRPTION] && json[DESCRPTION]!=[NSNull null])
+
+    if (json[DESCRPTION] && json[DESCRPTION] != [NSNull null])
     {
         object.desc = json[DESCRPTION];
     }
-    
-    if(json[IMAGE_HERF] && json[IMAGE_HERF]!=[NSNull null])
+
+    if (json[IMAGE_HERF] && json[IMAGE_HERF] != [NSNull null])
     {
         object.imageHref = json[IMAGE_HERF];
     }
-    
+
     return object;
 }
 

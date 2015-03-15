@@ -13,7 +13,8 @@
 
 @class NewsFeed;
 
-typedef void(^SucessBlock)(NewsFeed * newsFeed);
+typedef void(^SucessBlock)(NewsFeed *newsFeed);
+
 typedef void(^FailureBlock)(NSError *error);
 
 @protocol NewsFeedDataService <NSObject>
@@ -24,6 +25,6 @@ typedef void(^FailureBlock)(NSError *error);
  *  @param success block to execute when success
  *  @param failure block to execute when failure
  */
-- (void)getNewsFeedWithSucessBlock:(SucessBlock)success andFailureBlock:(FailureBlock) failure;
+- (void)getNewsFeedWithSucessBlock:(SucessBlock)success andFailureBlock:(FailureBlock)failure;
 
 @end

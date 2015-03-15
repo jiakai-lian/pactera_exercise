@@ -20,7 +20,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self toJSONDictionary]
                                                        options:NSJSONWritingPrettyPrinted error:&error];
     NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
+
     return str;
 }
 
@@ -41,20 +41,20 @@
 
 + (id)fromJSONString:(NSString *)str
 {
-    if(!str)
+    if (!str)
     {
         return nil;
     }
-    
+
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
     //parse out the json data
     NSError *error;
     NSDictionary *json = [NSJSONSerialization
-                          JSONObjectWithData:data
-                          
-                          options:NSJSONReadingMutableContainers
-                          error:&error];
-    
+            JSONObjectWithData:data
+
+                       options:NSJSONReadingMutableContainers
+                         error:&error];
+
     return [self fromJSONDictionary:json];
 }
 

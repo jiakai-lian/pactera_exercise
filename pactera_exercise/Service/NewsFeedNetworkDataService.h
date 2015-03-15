@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NewsFeedDataService.h"
+
 @interface NewsFeedNetworkDataService : NSObject <NewsFeedDataService>
 {
 @private
@@ -16,6 +17,6 @@
     FailureBlock failureBlock;
 }
 
-@property (nonatomic, retain) NewsFeed *newsFeed;
-@property (nonatomic, retain) NSMutableData *responseData;
+@property(nonatomic, retain) NewsFeed *newsFeed;
+@property(nonatomic, retain) NSMutableData *responseData;
 @end

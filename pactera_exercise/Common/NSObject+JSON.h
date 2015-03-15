@@ -19,7 +19,6 @@
 + (id)fromJSONDictionary:(NSDictionary *)dictionary;
 
 
-
 + (id)fromJSONString:(NSString *)str;
 
 @end
