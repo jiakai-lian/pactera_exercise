@@ -16,8 +16,8 @@
 @interface NewsFeedTableViewController ()
 {
 @private
-    NewsFeed *feed;
-    NSMutableDictionary *imageCache;
+    NewsFeed *feed; //news feed object
+    NSMutableDictionary *imageCache; // a dictionary to store url as key, and  UIImage as value
 }
 
 @property(nonatomic, retain) AppDelegate *appDelegate;
@@ -34,6 +34,7 @@
     imageCache = [[NSMutableDictionary dictionary] retain];
     _appDelegate = APP_DELEGATE;
 
+    //init refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor purpleColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
@@ -46,6 +47,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    NSMutableDictionary * newCache = [NSMutableDictionary dictionary];
+    
+    //save images in visible rows to new cache
+    for(NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows)
+    {
+        NSString * imageHref = ((Row *)[feed.rows objectAtIndex:indexPath.row]).imageHref;
+        if(imageCache[imageHref])
+        {
+            newCache[imageHref] = imageCache[imageHref];
+        }
+    }
+    
+    
+    //replace the image cache by new cache
+    [imageCache release];
+    imageCache = [newCache retain];
+
 }
 
 - (void)dealloc
@@ -64,11 +83,14 @@
     [super dealloc];
 }
 
+#pragma mark - private methods
+/**
+ *  get latest news feed via data service
+ */
 - (void)getLatestNewsFeed
 {
     [_appDelegate.service getNewsFeedWithSuccessBlock:^(NewsFeed *newsFeed)
     {
-
         feed = [newsFeed retain];
         self.title = feed.title;
         [self performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
@@ -83,10 +105,11 @@
 
         [self performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }];
-
-
 }
 
+/**
+ *  reload data after get news feed
+ */
 - (void)reloadData
 {
     // Reload table data
@@ -95,7 +118,6 @@
     // End the refreshing
     if (self.refreshControl)
     {
-
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"MMM d, h:mm a"];
         NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
@@ -104,7 +126,6 @@
         [title retain];
         NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
         self.refreshControl.attributedTitle = attributedTitle;
-
         [self.refreshControl endRefreshing];
 
 
@@ -114,13 +135,14 @@
     }
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table view delegate methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
     if (feed.rows.count)
     {
+        //1 section when feed has rows
         self.tableView.backgroundView = nil;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return 1;
@@ -161,17 +183,20 @@
     Row *row = (Row *)[[feed.rows objectAtIndex:indexPath.row] retain];
     cell.labelTitle.text = row.title;
     cell.labelDesc.text = row.desc;
-    cell.imageViewRow.image = nil;
+    cell.imageViewRow.image = nil;// have to clean the image view first
 
+    //when the row has image to load
     if (row.imageHref)
     {
-        LOG(@"imageCache = %@", imageCache);
+        
         if (imageCache[row.imageHref])
         {
+            //when the image is already in the cache, load from the cache
             cell.imageViewRow.image = imageCache[row.imageHref];
         }
         else
         {
+            //otherwise, load from network
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:row.imageHref]];
             NSOperationQueue *queue = [[NSOperationQueue alloc] init];
             [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
@@ -182,16 +207,15 @@
                     UIImage *image = [[UIImage alloc] initWithData:data];
                     if (image)
                     {
-
                         //save to cache first
                         imageCache[row.imageHref] = image;
+                        
+                        //only when the row is visiable, load the downloaded image to the cell
                         for (NSIndexPath *index in self.tableView.indexPathsForVisibleRows)
                         {
                             if ((indexPath.section == index.section) && (indexPath.row == index.row))
                             {
-
                                 ((NewsFeedTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath]).imageViewRow.image = imageCache[row.imageHref];
-
                             }
                         }
                     }

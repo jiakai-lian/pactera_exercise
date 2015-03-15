@@ -19,6 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+    //load network service to app service interface
     _service = [[NewsFeedNetworkDataService alloc] init];
     
     // Override point for customization after application launch.
